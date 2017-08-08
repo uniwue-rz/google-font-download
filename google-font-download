@@ -274,9 +274,9 @@ for family in "${families[@]}"; do
 
 	# Extract name, Windows-safe filename, font style and font weight from the font family name
 	fontname=$(echo "$family" | awk -F : '{print $1}')
-	fontnameescaped=$(echo "$family" | $ESED 's/( |:)/_/g')
 	fontstyle=$(echo "$family" | awk -F : '{print $2}')
 	fontweight=$(echo "$fontstyle" | $ESED 's/italic$//g')
+	fontnameescaped=$(echo "$fontstyle" | $ESED 's/italic$/i/g')
 
 	numfontweight=$(echo "$fontweight" | tr -Cd ',')
 	if [ ${#numfontweight} -ge 1 ]; then
